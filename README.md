@@ -31,7 +31,7 @@ Run the `score` command to calculate the score where `results` is an array of fr
 
 `npm run score <results>`
 
-Example.:
+Example:
 
 `npm run score "[1, 4], [4, 5], [6, 4], [5, 5], [10], [0, 1], [7, 3], [6, 4], [10], [2, 8, 6]"`
 
