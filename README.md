@@ -25,6 +25,8 @@ Build and transpile the application into the `_dist` directory:
 
 `npm run build`
 
+Uncomment [this line](https://github.com/lorenzode/bowling-game/blob/cdc8c4bf3f630d7f3021cea5cf5134ed9066975d/src/lib.js#L38) for additional score per frame output.
+
 ## CLI usage
 
 Run the `score` command to calculate the score where `results` is an array of frame arrays:
