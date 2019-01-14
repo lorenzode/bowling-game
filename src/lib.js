@@ -109,17 +109,29 @@ export const scoreForFrame = frame => {
 }
 
 /** Returns the bonus if a spare happened in the current frame
- * @param {array} nextFrame - the frame after the current frame
+ * @param {array} frame - the frame after the current frame
+ * or the current frame if it is the last frame
+ * @param {boolean} isLastFrame - indicate if this the last frame in the game. Defaults to false.
  * @returns {number}
  */
-export const bonusForSpare = nextFrame => {
-  return nextFrame[0]
+export const bonusForSpare = (frame, isLastFrame = false) => {
+  if (isLastFrame) {
+    if (frame.length !== 3) {
+      throw new Error('Spare bonus cannot be calculated if the last frame does not have 3 rolls.')
+    } else return frame[2]
+  } else return frame[0]
 }
 
 /** Returns the bonus if a strike happened in the current frame
- * @param {array} nextFrame - the frame after the current frame
+ * @param {array} frame - the frame after the current frame
+ * or the current frame if it is the tenth frame
+ * @param {boolean} isLastFrame - indicate if this the last frame in the game. Defaults to false.
  * @returns {number}
  */
-export const bonusForStrike = nextFrame => {
-  return nextFrame[0] + nextFrame[1]
+export const bonusForStrike = (frame, isLastFrame = false) => {
+  if (isLastFrame) {
+    if (frame.length !== 3) {
+      throw new Error('Spare bonus cannot be calculated if the last frame does not have 3 rolls.')
+    } else return frame[1] + frame[2]
+  } else return frame[0] + frame[1]
 }

@@ -128,15 +128,35 @@ describe('#scoreForFrame', (done) => {
 })
 
 describe('#bonusForSpare', (done) => {
-  it('should be the amount of pins scored in the first roll of the next frame', (done) => {
+  it('should be the amount of pins scored in the first roll of the next frame if this is not the last frame', (done) => {
     assert.equal(bonusForSpare([5, 1]), 5)
+    done()
+  })
+
+  it('should be the amount of pins scored in the third roll if this is the last frame', (done) => {
+    assert.equal(bonusForSpare([5, 1, 2], true), 2)
+    done()
+  })
+
+  it('should throw an error if this is the last frame and the frame does not have three rolls', (done) => {
+    assert.throws(() => bonusForSpare([5, 1], true), Error)
     done()
   })
 })
 
 describe('#bonusForStrike', (done) => {
-  it('should be the amount of pins scored in the next two rolls', (done) => {
+  it('should be the amount of pins scored in the first two rolls of the frame if this is not the last frame', (done) => {
     assert.equal(bonusForStrike([5, 1]), 6)
+    done()
+  })
+
+  it('should be the amount of pins scored in the last two rolls of the frame if this is the last frame', (done) => {
+    assert.equal(bonusForStrike([5, 1, 1], true), 2)
+    done()
+  })
+
+  it('should throw an error if this is the last frame and the frame does not have three rolls', (done) => {
+    assert.throws(() => bonusForStrike([5, 1], true), Error)
     done()
   })
 })
