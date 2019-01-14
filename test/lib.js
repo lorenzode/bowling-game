@@ -89,6 +89,11 @@ describe('#validateAsLastFrame', (done) => {
     assert.throws(() => validateAsLastFrame([10]), Error)
     done()
   })
+
+  it('should throw error if it has more than 3 rolls', (done) => {
+    assert.throws(() => validateAsLastFrame([1, 5, 2, 4]), Error)
+    done()
+  })
 })
 
 describe('#isSpare', (done) => {

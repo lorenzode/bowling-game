@@ -71,7 +71,9 @@ export const validateAsFirstFrame = frame => {
  * @returns {array} frame
  */
 export const validateAsLastFrame = (frame, spareValidator = isSpare, strikeValidator = isStrike) => {
-  if (frame.length === 3) {
+  if (frame.length > 3) {
+    throw new Error('Last frame cannot have more than three rolls.')
+  } else if (frame.length === 3) {
     if (spareValidator(frame)) return frame
     else throw new Error('Last frame needs a spare in order to qualify for three rolls.')
   } else if (strikeValidator(frame) && frame.length === 1) {
