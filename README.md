@@ -27,7 +27,7 @@ Build and transpile the application into the `_dist` directory:
 
 ## CLI usage
 
-Run the `score` command to calculate the score and add the frames as arrays:
+Run the `score` command to calculate the score:
 
 `npm run score <results>`
 
